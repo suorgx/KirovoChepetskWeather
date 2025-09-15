@@ -9,13 +9,13 @@
     });
 </script>
 
-<h1 class="text-3xl font-bold underline">
-    Средняя погода в этот день в Кирово-Чепецке
-</h1>
+<div class="flex flex-col flex-wrap md:flex-row gap-6">
 
-<ul class="flex flex-col gap-2">
-    {#each data as year}
-        <li class="w-fit rounded-lg border px-2 py-1 text-sm bg-gray-100 hover:bg-gray-200">{year["year"]}: {year["average"]}</li>
+    {#each data.slice(0, 18) as year}
+        <div class="flex-1 bg-white p-4 rounded-lg shadow">
+            <h3 class="text-xl font-semibold mb-4">{year["year"]}: {year["average"]}</h3>
+            <button class="mt-4 w-fit bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-300 transition duration-300">Подробнее</button>
+        </div>
     {/each}
-</ul>
+</div>
 
