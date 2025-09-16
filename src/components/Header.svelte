@@ -7,7 +7,9 @@
     });
 </script>
 
-<header>
-    <h1 class="text-2xl font-bold mb-0">Кирово-Чепецк, Погода в этот день</h1>
-    <h2 class="text-xl mb-8">{localDate}</h2>
+<header class="flex items-center justify-between p-6">
+    <div>
+        <h2 class="text-xl font-semibold text-gray-800">Кирово-Чепецк, Погода в этот день</h2>
+        <p class="text-gray-500">{localDate}</p>
+    </div>
 </header>
