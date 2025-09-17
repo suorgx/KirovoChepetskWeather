@@ -2,8 +2,8 @@
 	import HistoryChart from '../components/HistoryChart.svelte';
 
 	// тестовые даты
-	let day: number = 1;
-	let month: number = 10;
+	let day: number = 10;
+	let month: number = 1;
 </script>
 
 <div class="grid grid-cols-2 gap-4 p-6">
@@ -33,9 +33,7 @@
 
 	<div class="col-span-2 bg-white rounded-2xl shadow p-6">
 		<h3 class="text-gray-700 font-medium mb-4">Средняя температура в этот день, по годам</h3>
-		<div
-			class="bg-gradient-to-t from-blue-100 to-blue-50 rounded-lg flex items-center justify-center text-gray-400"
-		>
+		<div class="flex items-center justify-center text-gray-400">
 			<HistoryChart currentDay={day} currentMonth={month} />
 		</div>
 	</div>

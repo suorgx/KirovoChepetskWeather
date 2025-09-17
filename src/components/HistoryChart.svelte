@@ -15,13 +15,10 @@
 	let canvas: HTMLCanvasElement;
 
 	onMount(async () => {
-		console.log('currentDate', currentDay, currentMonth);
-
-		// #TODO сделать запрос к текущему дню
-		const res = await fetch('/api/data');
+		const res = await fetch(`/api/data?month=${currentMonth}&day=${currentDay}`);
 		rawData = (await res.json()) as DataPoint[];
 
-		const filtered = rawData.filter((d) => d.year % 2 === 0);
+		const filtered = rawData.filter((d) => d.year % 2 === 0).reverse();
 
 		const yearLabels = filtered.map((d) => d.year);
 		const avgValues = filtered.map((d) => d.average);
@@ -47,7 +44,7 @@
 				},
 				scales: {
 					x: {
-						ticks: { autoSkip: true, maxRotation: 55, minRotation: 55 }
+						ticks: { autoSkip: true, maxRotation: 45, minRotation: 45 }
 					}
 				}
 			},
