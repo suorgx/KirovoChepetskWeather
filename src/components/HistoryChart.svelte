@@ -15,7 +15,8 @@
 	let canvas: HTMLCanvasElement;
 
 	onMount(async () => {
-		const res = await fetch(`/api/data?month=${currentMonth}&day=${currentDay}`);
+		console.log(currentMonth, currentDay)
+		const res = await fetch('/api/data');
 		rawData = (await res.json()) as DataPoint[];
 
 		const filtered = rawData.filter((d) => d.year % 2 === 0).reverse();
