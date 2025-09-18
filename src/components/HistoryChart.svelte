@@ -2,27 +2,17 @@
 	import { onMount } from 'svelte';
 	import { Chart } from 'chart.js/auto';
 	import type { ChartConfiguration } from 'chart.js';
+	import type { WeatherResponse } from '../interfaces/WeatherResponse';
+	import type { DataPoint } from '../interfaces/DataPoint';
 
-	interface DataPoint {
-		year: number;
-		average: number;
-	}
-
-	export let currentDay: number;
-	export let currentMonth: number;
-
-	let rawData: DataPoint[] = [];
+	let { weather, data }: { weather: WeatherResponse; data: DataPoint[] } = $props();
 	let canvas: HTMLCanvasElement;
 
-	onMount(async () => {
-		console.log(currentMonth, currentDay)
-		const res = await fetch('/api/data');
-		rawData = (await res.json()) as DataPoint[];
+	console.log(weather.location.localtime, data);
 
-		const filtered = rawData.filter((d) => d.year % 2 === 0).reverse();
-
-		const yearLabels = filtered.map((d) => d.year);
-		const avgValues = filtered.map((d) => d.average);
+	onMount(() => {
+		const yearLabels = data.map((d) => d.year);
+		const avgValues = data.map((d) => d.average);
 
 		const ctx = canvas.getContext('2d');
 		if (!ctx) return;
