@@ -10,5 +10,8 @@ export interface WeatherResponse {
 			text: string;
 			icon: string;
 		};
+		feelslike_c: number;
+		wind_kph: number;
+		humidity: number;
 	};
 }
