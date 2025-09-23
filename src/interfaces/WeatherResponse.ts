@@ -14,4 +14,13 @@ export interface WeatherResponse {
 		wind_kph: number;
 		humidity: number;
 	};
+	forecast: {
+		forecastday: {
+			date: string;
+			astro: {
+				sunrise: string;
+				sunset: string;
+			};
+		}[];
+	};
 }
