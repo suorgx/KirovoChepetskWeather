@@ -5,7 +5,7 @@
 	import WeatherInfo from '../components/WeatherInfo.svelte';
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import { isLoading } from '$lib/stores/loading';
+	import { isLoading } from '$lib/loading';
 
 	import type { WeatherResponse } from '../interfaces/WeatherResponse';
 	import type { DataPoint } from '../interfaces/DataPoint';
@@ -44,10 +44,15 @@
 		<Header {weather} />
 
 		<div class="grid grid-cols-2 gap-4 p-6">
-				<WeatherInfo label="Температура сейчас" value={`${weather.current.feelslike_c}°C`} />
-				<WeatherInfo label="Погода" value={weather.current.condition.text} imageSrc={weather.current.condition.icon} imageAlt="Погода" />
-				<WeatherInfo label="Скорость ветра" value={`${weather.current.wind_kph}km/h`} />
-				<WeatherInfo label="Влажность" value={`${weather.current.humidity}%`} />
+			<WeatherInfo label="Температура сейчас" value={`${weather.current.feelslike_c}°C`} />
+			<WeatherInfo
+				label="Погода"
+				value={weather.current.condition.text}
+				imageSrc={weather.current.condition.icon}
+				imageAlt="Погода"
+			/>
+			<WeatherInfo label="Скорость ветра" value={`${weather.current.wind_kph}км/ч`} />
+			<WeatherInfo label="Влажность" value={`${weather.current.humidity}%`} />
 		</div>
 
 		<div class="grid grid-cols-3 gap-6 p-6">
@@ -60,8 +65,14 @@
 		</div>
 
 		<div class="grid grid-cols-2 gap-4 p-6">
-			<WeatherInfo label="Восход солнца" value={weather.forecast.forecastday[0].astro.sunrise} />
-			<WeatherInfo label="Закат солнца" value={weather.forecast.forecastday[0].astro.sunset} />
+			<WeatherInfo
+				label="Восход солнца"
+				value={`${weather.forecast.forecastday[0].astro.sunrise.slice(0, 5)} утра`}
+			/>
+			<WeatherInfo
+				label="Закат солнца"
+				value={`${weather.forecast.forecastday[0].astro.sunset.slice(0, 5)} вечера`}
+			/>
 		</div>
 	</div>
 {/if}
