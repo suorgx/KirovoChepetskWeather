@@ -10,6 +10,6 @@
 	<title>Погода в Кирово-Чепецке в этот день</title>
 </svelte:head>
 
-<div class="bg-slate-50 min-h-screen p-8">
+<div class="bg-slate-50 min-h-screen p-2 sm:p-4 lg:p-6">
 	{@render children?.()}
 </div>
