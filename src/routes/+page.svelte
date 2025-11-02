@@ -3,6 +3,7 @@
 	import Loader from '../components/Loader.svelte';
 	import Header from '../components/Header.svelte';
 	import WeatherInfo from '../components/WeatherInfo.svelte';
+	import ForecastChart from '../components/ForecastChart.svelte';
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { isLoading } from '$lib/loading';
@@ -57,9 +58,9 @@
 
 		<div class="grid grid-cols-1 gap-4 p-2 sm:p-4 lg:p-6">
 			<div class="col-span-3 bg-white rounded-2xl shadow p-6">
-				<h3 class="text-gray-700 font-medium mb-4">Средняя температура в этот день, по годам</h3>
+				<h3 class="text-gray-700 font-medium mb-4">Почасовой прогноз на сегодня</h3>
 				<div class="flex items-center justify-center text-gray-400">
-					<HistoryChart {weather} {data} />
+					<ForecastChart hours={weather.forecast.forecastday[0].hour} />
 				</div>
 			</div>
 		</div>
@@ -73,6 +74,15 @@
 				label="Закат солнца"
 				value={`${weather.forecast.forecastday[0].astro.sunset.slice(0, 5)} вечера`}
 			/>
+		</div>
+
+		<div class="grid grid-cols-1 gap-4 p-2 sm:p-4 lg:p-6">
+			<div class="col-span-3 bg-white rounded-2xl shadow p-6">
+				<h3 class="text-gray-700 font-medium mb-4">Средняя температура в этот день, по годам</h3>
+				<div class="flex items-center justify-center text-gray-400">
+					<HistoryChart {weather} {data} />
+				</div>
+			</div>
 		</div>
 	</div>
 {/if}
