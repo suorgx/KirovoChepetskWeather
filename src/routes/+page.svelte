@@ -45,14 +45,14 @@
 		<Header {weather} />
 
 		<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-2 sm:p-4 lg:p-6">
-			<WeatherInfo label="Температура сейчас" value={`${weather.current.feelslike_c}°C`} />
+			<WeatherInfo label="Температура сейчас" value={`${weather.current.temp_c}°C`} />
+			<WeatherInfo label="Ощущается как" value={`${weather.current.feelslike_c}°C`} />
 			<WeatherInfo
 				label="Погода"
 				value={weather.current.condition.text}
 				imageSrc={weather.current.condition.icon}
 				imageAlt="Погода"
 			/>
-			<WeatherInfo label="Скорость ветра" value={`${weather.current.wind_kph}км/ч`} />
 			<WeatherInfo label="Влажность" value={`${weather.current.humidity}%`} />
 		</div>
 
@@ -65,7 +65,7 @@
 			</div>
 		</div>
 
-		<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 p-2 sm:p-4 lg:p-6">
+		<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-2 sm:p-4 lg:p-6">
 			<WeatherInfo
 				label="Восход солнца"
 				value={`${weather.forecast.forecastday[0].astro.sunrise.slice(0, 5)} утра`}
@@ -74,6 +74,8 @@
 				label="Закат солнца"
 				value={`${weather.forecast.forecastday[0].astro.sunset.slice(0, 5)} вечера`}
 			/>
+			<WeatherInfo label="Скорость ветра" value={`${weather.current.wind_kph} км/ч`} />
+			<WeatherInfo label="Видимость" value={`${weather.current.vis_km} км`} />
 		</div>
 
 		<div class="grid grid-cols-1 gap-4 p-2 sm:p-4 lg:p-6">

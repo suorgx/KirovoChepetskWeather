@@ -11,6 +11,7 @@ export interface WeatherResponse {
 			icon: string;
 		};
 		feelslike_c: number;
+		vis_km: number;
 		wind_kph: number;
 		humidity: number;
 	};
