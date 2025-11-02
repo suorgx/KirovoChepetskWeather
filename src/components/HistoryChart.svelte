@@ -34,7 +34,16 @@
 				responsive: true,
 				maintainAspectRatio: false,
 				plugins: {
-					legend: { display: false }
+					legend: {
+						display: false
+					},
+					tooltip: {
+						callbacks: {
+							label: (context) => {
+								return `${context.parsed.y}°C`;
+							}
+						}
+					}
 				},
 				scales: {
 					x: {
