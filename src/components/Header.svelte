@@ -17,7 +17,7 @@
 
 <header class="flex items-center justify-between p-2 sm:p-4 lg:p-6">
 	<div>
-		<h2 class="text-xl font-semibold text-gray-800">Кирово-Чепецк, Погода в этот день</h2>
+		<h2 class="text-xl font-semibold text-gray-800">Киров, Погода в этот день</h2>
 		<p class="text-gray-500">{formatLocalTime(weather.location.localtime)}</p>
 	</div>
 </header>
